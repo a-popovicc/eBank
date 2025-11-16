@@ -1,0 +1,16 @@
+.hoverButton {
+    -fx-background-color: transparent;
+    -fx-text-fill: #41198d;
+    -fx-font-size: 18px;
+
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.hoverButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: white;
+}
