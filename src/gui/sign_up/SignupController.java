@@ -3,6 +3,7 @@ package gui.sign_up;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class SignupController {
@@ -16,7 +17,7 @@ public class SignupController {
     @FXML
     private TextField textFieldEmail;
     @FXML
-    private TextField textFieldPassword;
+    private TextField textFieldPassword2;
     @FXML
     private TextField textFieldPasswordConfirm;
     @FXML

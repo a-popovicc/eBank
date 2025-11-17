@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="359.0" style="-fx-background-color: #412c8d; -fx-background-image: url('/resources/picture/platna-kartica.png');" stylesheets="@/resources/style/style.css, @/resources/style/label-strong.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.sign_up.SignupController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="407.0" layoutX="34.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 1; -fx-stroke: transparent;" width="305.0">
+      <Rectangle fx:id="passwordFieldConfirm" arcHeight="5.0" arcWidth="5.0" height="407.0" layoutX="34.0" layoutY="35.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 1; -fx-stroke: transparent;" width="305.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -29,8 +29,6 @@
       <TextField fx:id="textFieldName" layoutX="100.0" layoutY="79.0" prefHeight="25.0" prefWidth="173.0" />
       <TextField fx:id="textFieldSurname" layoutX="100.0" layoutY="138.0" prefHeight="25.0" prefWidth="173.0" />
       <TextField fx:id="textFieldEmail" layoutX="100.0" layoutY="196.0" prefHeight="25.0" prefWidth="173.0" />
-      <TextField fx:id="textFieldPassword" layoutX="100.0" layoutY="256.0" prefHeight="25.0" prefWidth="173.0" />
-      <TextField fx:id="textFieldPasswordConfirm" layoutX="100.0" layoutY="312.0" prefHeight="25.0" prefWidth="173.0" />
       <Label fx:id="nameLabel" layoutX="100.0" layoutY="104.0" prefHeight="19.0" prefWidth="52.0" styleClass="label-strong" text="Name">
          <font>
             <Font size="13.0" />
@@ -51,7 +49,7 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label fx:id="passwordConfirmLabel2" layoutX="100.0" layoutY="337.0" styleClass="label-strong" text="Password confirm">
+      <Label fx:id="passwordConfirmLabel2" layoutX="101.0" layoutY="337.0" styleClass="label-strong" text="Password confirm">
          <font>
             <Font size="13.0" />
          </font>
@@ -61,5 +59,7 @@
               <Font size="12.0" />
           </font>
       </Button>
+      <TextField fx:id="textFieldPassword2" layoutX="101.0" layoutY="256.0" prefHeight="25.0" prefWidth="173.0" />
+      <TextField fx:id="textFieldPasswordConfirm" layoutX="101.0" layoutY="312.0" prefHeight="25.0" prefWidth="173.0" />
    </children>
 </AnchorPane>
