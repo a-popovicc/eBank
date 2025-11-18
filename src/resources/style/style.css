@@ -14,3 +14,21 @@
     -fx-background-color: white;
     -fx-text-fill: white;
 }
+.hoverButton2 {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-style:Bold;
+    -fx-cursor: hand;
+
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.hoverButton2:hover {
+    -fx-font-style: bold;
+    -fx-background-color: white;
+    -fx-border-color: #8c00ff;
+    -fx-text-fill: #00ffc4;
+}

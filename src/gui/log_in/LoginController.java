@@ -27,6 +27,8 @@ public class LoginController {
     private Button btnViewPassword;
     @FXML
     private Button btnLogin2;
+
+
     private boolean passwordVisible = false; // stanje lozinke
 
     @FXML

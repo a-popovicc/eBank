@@ -52,7 +52,7 @@
                </children></Pane>
             <Pane fx:id="paneButton" prefHeight="128.0" prefWidth="349.0">
                <children>
-                  <Button fx:id="btnPayment" layoutX="158.0" layoutY="35.0" maxWidth="51.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="51.0" style="-fx-background-radius: 50%; -fx-min-width: 40px; -fx-min-height: 40px; -fx-max-width: 40px; -fx-max-height: 40px;"/>
+                  <Button fx:id="btnPayment" layoutX="146.0" layoutY="30.0" maxHeight="43.0" maxWidth="45.0" mnemonicParsing="false" onAction="#handlebtnPayment" prefHeight="43.0" prefWidth="45.0" style="-fx-background-radius: 50%; -fx-min-width: 50px; -fx-min-height: 50px; -fx-max-width: 50px; -fx-max-height: 50px;" />
                </children></Pane>
          </children>
       </VBox>
