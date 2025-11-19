@@ -7,8 +7,20 @@ public class User {
     private String name;
     private String surname;
     private String email;
+    private String accNumber;
     private String password;
     private double balance;
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+    public User(String name, String surname, String email, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+    }
 
     public double getBalance() {
         return balance;
@@ -53,7 +65,7 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof User user)) return false;
-        return Objects.equals(email, user.email) && Objects.equals(password, user.password);
+        return Objects.equals(email, user.email);
     }
 
 }

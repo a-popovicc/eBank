@@ -1,5 +1,7 @@
 package gui.sign_up;
 
+import functionality.logic_controller.LogicController;
+import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +15,7 @@ import javafx.stage.Stage;
 public class SignupController {
 
     @FXML
-    private Button btnSignup;
+    private Button btnSignup2;
     @FXML
     private TextField textFieldName;
     @FXML
@@ -35,31 +37,28 @@ public class SignupController {
     @FXML
     private Label passwordConfirmLabel2;
 
+
     @FXML
-    public void openMainPage() {
-        try {
-            // prvo uzmi trenutni Login Stage i zatvori ga
-            Stage Stage = (Stage) btnSignup.getScene().getWindow();
-            Stage.close();
+    private void handleBtnSignup2() {
+        LogicController k=new LogicController();
+        if(k.signup(textFieldName.getText(),textFieldSurname.getText(),textFieldEmail.getText(),textFieldPassword2.getText())){
+            Stage loginStage = (Stage) btnSignup2.getScene().getWindow();
 
-            // učitaj FXML glavne stranice
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/mainPage/main.fxml"));
-            Parent root = loader.load();
-
-            // kreiraj novi Stage za glavnu stranu
-            Stage mainStage = new Stage();
-            mainStage.setTitle("Main Page");
-            mainStage.setScene(new Scene(root));
-            mainStage.show();
-
-            // zatvori sve preostale Stage-ove (npr. Welcome Stage)
-            Stage.getWindows().stream()
-                    .filter(window -> window instanceof Stage && window != mainStage)
-                    .forEach(window -> ((Stage) window).close());
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            NavigationController.openInNewWindow(
+                    loginStage,
+                    "/gui/mainPage/main.fxml",
+                    "Main Page",
+                    () -> {
+                        // ZATVORI SVE PRETHODNE STAGE-OVE (uključujući Welcome)
+                        Stage.getWindows().stream()
+                                .filter(window -> window instanceof Stage)
+                                .forEach(window -> {
+                                    if (window.isShowing()) window.hide();
+                                });
+                    }
+            );
         }
 
     }
+
 }

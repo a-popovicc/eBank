@@ -1,5 +1,6 @@
 package gui.transfer_payment;
 
+import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,23 +43,13 @@ public class TransferController {
      */
     @FXML
     public void handleCancel() {
-        try {
-            Stage Stage = (Stage) btnCancel.getScene().getWindow();
-            Stage.close();
+        Stage stage = (Stage) btnTransfer.getScene().getWindow();
 
-            // učitaj FXML glavne stranice
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/mainPage/main.fxml"));
-            Parent root = loader.load();
+        NavigationController.openInNewWindow(
+                stage,
+                "/gui/mainPage/main.fxml",
+                "Main Page", null
 
-            // kreiraj novi Stage za glavnu stranu
-            Stage mainStage = new Stage();
-            mainStage.setTitle("Main Page");
-            mainStage.setScene(new Scene(root));
-            mainStage.show();
-
-
-        } catch (Exception e) {
-
-        }
+        );
     }
 }

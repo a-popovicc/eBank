@@ -1,5 +1,6 @@
 package gui.mainPage;
 
+import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -47,24 +48,14 @@ public class MainController implements Initializable {
     }
     @FXML
     public void handlebtnPayment() {
-        try {
-            // prvo uzmi trenutni Main Stage i zatvori ga
-            Stage Stage = (Stage) btnPayment.getScene().getWindow();
-            Stage.close();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/transfer_payment/TransferPayment.fxml"));
-            Parent root = fxmlLoader.load();
+        Stage stage = (Stage) btnPayment.getScene().getWindow();
 
-            // Kreiraj novu scenu i prozor
-            Stage stage = new Stage();
-            stage.setTitle("Transfer");
-            stage.setScene(new Scene(root));
-            stage.show();
-            // zatvori sve preostale Stage-ove (npr. Welcome Stage)
+        NavigationController.openInNewWindow(
+                stage,
+                "/gui/transfer_payment/TransferPayment.fxml",
+                "Main Page", null
 
-
-        } catch (Exception e) {
-
-        }
+        );
 
     }
 }
