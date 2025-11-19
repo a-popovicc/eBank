@@ -1,4 +1,5 @@
 package gui.log_in;
+import functionality.logic_controller.LogicController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +15,7 @@ public class LoginController {
 
 
     @FXML
-    private TextField emailTextField;
+    private TextField textFieldEmail;
     @FXML
     private TextField textFieldPassword;
     @FXML
@@ -62,25 +63,15 @@ public class LoginController {
         }
     }
 
+    LogicController k = new LogicController();
 
     @FXML
     private void handleBtnLogin2() {
-        Stage loginStage = (Stage) btnLogin2.getScene().getWindow();
-
-        NavigationController.openInNewWindow(
-                loginStage,
-                "/gui/mainPage/main.fxml",
-                "Main Page",
-                () -> {
-                    // ZATVORI SVE PRETHODNE STAGE-OVE (uključujući Welcome)
-                    Stage.getWindows().stream()
-                            .filter(window -> window instanceof Stage)
-                            .forEach(window -> {
-                                if (window.isShowing()) window.hide();
-                            });
-                }
-        );
+        if (k.login(textFieldEmail.getText(), textFieldPassword.getText())) {
+            NavigationController.openNewPageAndClosePrevious(btnLogin2,"/gui/mainPage/main.fxml","Main Page");
+        }
     }
+
 
 }
 

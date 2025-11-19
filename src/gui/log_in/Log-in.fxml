@@ -26,7 +26,7 @@
                </stops>
             </LinearGradient>
          </fill></Rectangle>
-      <TextField fx:id="emailTextField" layoutX="100.0" layoutY="83.0" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="textFieldEmail" layoutX="100.0" layoutY="83.0" prefHeight="25.0" prefWidth="174.0" />
       <Label fx:id="emailLabel" layoutX="100.0" layoutY="108.0" prefHeight="17.0" prefWidth="43.0" styleClass="label-strong" text="E-mail" textFill="#070000" />
       <Label fx:id="passwordLabel" layoutX="100.0" layoutY="149.0" prefHeight="17.0" prefWidth="58.0" styleClass="label-strong" text="Password">
          <font>

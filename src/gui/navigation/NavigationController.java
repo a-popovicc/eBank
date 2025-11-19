@@ -1,6 +1,7 @@
 package gui.navigation;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -57,6 +58,31 @@ public class NavigationController {
             e.printStackTrace();
         }
     }
+    public static void openNewPageAndClosePrevious(Node nodeInCurrentWindow,  String fxmlPath,  String title){
+
+        Stage oldStage = (Stage) nodeInCurrentWindow.getScene().getWindow();
+
+        openInNewWindow(
+                oldStage,
+                fxmlPath,
+                title,
+                () -> {
+                    // ZATVARA SVE PRETHODNE PROZORE
+                    Stage.getWindows().stream()
+                            .filter(w -> w instanceof Stage)
+                            .forEach(w -> {
+                                if (w.isShowing()) w.hide();
+                            });
+                }
+        );
+
+    }public static void openNewPageAndClosePrevious2(Node nodeInCurrentWindow,  String fxmlPath,  String title){
+
+        Stage oldStage = (Stage) nodeInCurrentWindow.getScene().getWindow();
+
+        openInNewWindow(oldStage, fxmlPath, title, null);
+    }
+
 
 }
 

@@ -43,13 +43,6 @@ public class TransferController {
      */
     @FXML
     public void handleCancel() {
-        Stage stage = (Stage) btnTransfer.getScene().getWindow();
-
-        NavigationController.openInNewWindow(
-                stage,
-                "/gui/mainPage/main.fxml",
-                "Main Page", null
-
-        );
+        NavigationController.openNewPageAndClosePrevious2(btnCancel, "/gui/mainPage/main.fxml", "Main Page");
     }
 }

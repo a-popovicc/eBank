@@ -2,47 +2,44 @@ package gui.welcome;
 
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;     // za Scene
-import javafx.stage.Stage;    // za Stage
 import javafx.scene.control.Button;
 
 public class WelcomeController {
+
+
   @FXML
     private Button btnLogin;
   @FXML
     private Button btnSignup;
 
+    @FXML
+    public void handleLoginButton(){
+        btnLogin.setDisable(true);
+        btnSignup.setDisable(true);
 
-      @FXML
-        public void handleLoginButton() {
-          btnLogin.setDisable(true);
-          btnSignup.setDisable(true);
-
-          NavigationController.openInNewWindow(
-                  "/gui/log_in/Log-in.fxml",
-                  "Log-in",
-                  () -> {
-                      btnLogin.setDisable(false);
-                      btnSignup.setDisable(false);
-                  }
-          );
-      }
+        NavigationController.openInNewWindow(
+                "/gui/log_in/Log-in.fxml",
+                "Log-in",
+                () -> {
+                    btnLogin.setDisable(false);
+                    btnSignup.setDisable(false);
+                }
+        );
+    }
 
     @FXML
     public void handleSignupButton(){
-            btnLogin.setDisable(true);
-            btnSignup.setDisable(true);
+      btnLogin.setDisable(true);
+      btnSignup.setDisable(true);
 
-            NavigationController.openInNewWindow(
-                    "/gui/sign_up/Sign-up.fxml",
-                    "Sign-up",
-                    () -> {
-                        btnLogin.setDisable(false);
-                        btnSignup.setDisable(false);
-                    }
-            );
-        }
+        NavigationController.openInNewWindow(
+                "/gui/sign_up/Sign-up.fxml",
+                "Sign-up",
+                () -> {
+                    btnLogin.setDisable(false);
+                    btnSignup.setDisable(false);
+                }
+        );
+    }
 
 }

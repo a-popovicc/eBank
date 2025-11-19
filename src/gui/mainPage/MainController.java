@@ -1,5 +1,6 @@
 package gui.mainPage;
 
+import functionality.logic_controller.LogicController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,17 +47,11 @@ public class MainController implements Initializable {
 
         btnPayment.setGraphic(iv);
     }
+
+
     @FXML
     public void handlebtnPayment() {
-        Stage stage = (Stage) btnPayment.getScene().getWindow();
-
-        NavigationController.openInNewWindow(
-                stage,
-                "/gui/transfer_payment/TransferPayment.fxml",
-                "Main Page", null
-
-        );
-
+        NavigationController.openNewPageAndClosePrevious2(btnPayment,"/gui/transfer_payment/TransferPayment.fxml","Payment");
     }
 }
 

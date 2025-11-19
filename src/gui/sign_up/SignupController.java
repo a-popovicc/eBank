@@ -38,27 +38,14 @@ public class SignupController {
     private Label passwordConfirmLabel2;
 
 
+    LogicController k = new LogicController();
+
     @FXML
     private void handleBtnSignup2() {
-        LogicController k=new LogicController();
-        if(k.signup(textFieldName.getText(),textFieldSurname.getText(),textFieldEmail.getText(),textFieldPassword2.getText())){
-            Stage loginStage = (Stage) btnSignup2.getScene().getWindow();
-
-            NavigationController.openInNewWindow(
-                    loginStage,
-                    "/gui/mainPage/main.fxml",
-                    "Main Page",
-                    () -> {
-                        // ZATVORI SVE PRETHODNE STAGE-OVE (uključujući Welcome)
-                        Stage.getWindows().stream()
-                                .filter(window -> window instanceof Stage)
-                                .forEach(window -> {
-                                    if (window.isShowing()) window.hide();
-                                });
-                    }
-            );
+        if (k.signup(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword2.getText())) {
+            NavigationController.openNewPageAndClosePrevious(btnSignup2,"/gui/mainPage/main.fxml","Main Page");
         }
-
     }
+
 
 }
