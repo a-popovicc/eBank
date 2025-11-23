@@ -4,5 +4,11 @@
     "surname": "Popovic",
     "email": "apopoviicc@gmail.com",
     "password": "13121764A"
+  },
+  {
+    "name": "Name",
+    "surname": "Surname",
+    "email": "",
+    "password": ""
   }
 ]

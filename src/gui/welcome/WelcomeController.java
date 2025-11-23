@@ -40,6 +40,7 @@ public class WelcomeController {
                     btnSignup.setDisable(false);
                 }
         );
+
     }
 
 }
