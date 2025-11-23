@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@/resources/style/hoverButton.css, @/resources/style/label-strong.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.main_page.MainController">
+   <center>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('file:/C:/Users/pop/Documents/bank.png'); -fx-background-color: transparent; -fx-background: transparent; -fx-background-size: cover;" BorderPane.alignment="CENTER">
+         <content>
+            <VBox fx:id="accountContainer" alignment="CENTER" prefHeight="400.0" prefWidth="399.0" spacing="20.0" />
+         </content></ScrollPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" layoutX="-6.0" stroke="BLACK" strokeType="INSIDE" style="-fx-stroke: transparent;" width="206.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.007662835249042145">
+                           <color>
+                              <Color red="0.3241553008556366" green="0.19322611391544342" blue="0.6842105388641357" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.46605852246284485" green="0.3235258162021637" blue="0.6184210777282715" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label fx:id="emailLabel" layoutX="6.0" layoutY="4.0" prefHeight="17.0" prefWidth="176.0" text="email@gmail.com" textFill="#fff9f9" />
+            <Label fx:id="UserNameLabel" alignment="CENTER" layoutY="139.0" prefHeight="27.0" prefWidth="200.0" text="Aleksa Popovic" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnCreateNew" layoutX="40.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleBtnCreateNew" style="-fx-background-color: transparent;" styleClass="hoverButton3" text="Create new account" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </left>
+</BorderPane>

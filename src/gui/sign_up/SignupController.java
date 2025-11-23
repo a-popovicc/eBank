@@ -1,16 +1,15 @@
 package gui.sign_up;
 
-import functionality.logic_controller.LogicController;
+import functionality.app;
+import functionality.appController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import user.User;
+import user.UserSession;
+import validation.SignupValidation;
 
 public class SignupController {
 
@@ -38,12 +37,35 @@ public class SignupController {
     private Label passwordConfirmLabel2;
 
 
-    LogicController k = new LogicController();
+    appController app = new appController();
 
     @FXML
     private void handleBtnSignup2() {
-        if (k.signup(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword2.getText())) {
-            NavigationController.openNewPageAndClosePrevious(btnSignup2,"/gui/mainPage/main.fxml","Main Page");
+        boolean valid = SignupValidation.validateSignup(
+                textFieldName.getText(),
+                textFieldSurname.getText(),
+                textFieldEmail.getText(),
+                textFieldPassword2.getText(),
+                textFieldPasswordConfirm.getText(),
+                nameLabel,
+                surnameLabel,
+                emailLabel2,
+                passwordLabel2,
+                passwordConfirmLabel2);
+
+        if (!valid) {
+            return; // prekini
+        }
+        User loggedUser = app.signup(textFieldName.getText(), textFieldSurname.getText(), textFieldEmail.getText(), textFieldPassword2.getText());
+
+        if (loggedUser != null) {
+
+            UserSession.setActiveUser(loggedUser);
+            NavigationController.openNewPageAndClosePrevious(btnSignup2,"/gui/main_page/main.fxml","Main Page");
+
+        }else{
+            emailLabel2.setText("Error: User with this e-mail already exists");
+            emailLabel2.setStyle("-fx-text-fill: red;");
         }
     }
 

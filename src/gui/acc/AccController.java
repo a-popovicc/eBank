@@ -1,23 +1,18 @@
-package gui.mainPage;
+package gui.acc;
 
-import functionality.logic_controller.LogicController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class AccController implements Initializable {
 
     @FXML
     private Button btnPayment;
@@ -39,7 +34,7 @@ public class MainController implements Initializable {
         balanceChart.setLegendVisible(false);
 
         // === Postavljanje slike na dugme (40x40 krug) ===
-        Image img = new Image(getClass().getResource("/resources/picture/btnPlacanje.png").toExternalForm());
+        Image img = new Image(getClass().getResource("/resources/picture/btnPayment.png").toExternalForm());
         ImageView iv = new ImageView(img);
         iv.setFitWidth(50);
         iv.setFitHeight(50);

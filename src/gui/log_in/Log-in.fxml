@@ -6,9 +6,8 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="374.0" style="-fx-background-color: #4A90E2; -fx-background-image: url('/resources/picture/platna-kartica.png');" stylesheets="@/resources/style/style.css, @/resources/style/label-strong.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.log_in.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="374.0" style="-fx-background-color: #4A90E2; -fx-background-image: url('/resources/picture/credit-card.png');" stylesheets="@/resources/style/hoverButton.css, @/resources/style/label-strong.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.log_in.LoginController">
    <children>
-      <TitledPane animated="false" layoutX="-355.0" layoutY="-192.0" text="untitled" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="166.0" layoutX="57.0" layoutY="41.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 1; -fx-stroke: transparent;" width="262.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="602.0" style="-fx-background-color: #4A90E2; -fx-background-image: url('/resources/picture/platna-kartica.png'); -fx-background-size: cover; -fx-background-position: center; -fx-background-repeat: no-repeat;" stylesheets="@../../resources/style/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.welcome.WelcomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="602.0" style="-fx-background-color: #4A90E2; -fx-background-image: url('/resources/picture/credit-card.png'); -fx-background-size: cover; -fx-background-position: center; -fx-background-repeat: no-repeat;" stylesheets="@../../resources/style/hoverButton.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.welcome.WelcomeController">
 
 
 

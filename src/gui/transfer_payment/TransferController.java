@@ -2,13 +2,9 @@ package gui.transfer_payment;
 
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 public class TransferController {
     @FXML
@@ -43,6 +39,6 @@ public class TransferController {
      */
     @FXML
     public void handleCancel() {
-        NavigationController.openNewPageAndClosePrevious2(btnCancel, "/gui/mainPage/main.fxml", "Main Page");
+        NavigationController.openNewPageAndClosePrevious2(btnCancel, "/gui/acc/acc.fxml", "Main Page");
     }
 }

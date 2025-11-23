@@ -1,3 +1,11 @@
 .label-strong {
     -fx-text-fill: rgba(0, 0, 0, 1.0);   /* potpuno crno */
 }
+
+.purpleField {
+    -fx-prompt-text-fill: #9611d3;
+    -fx-text-fill: #9611d3;
+}
+
+
+

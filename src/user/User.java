@@ -1,5 +1,6 @@
 package user;
 
+import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -7,9 +8,8 @@ public class User {
     private String name;
     private String surname;
     private String email;
-    private String accNumber;
     private String password;
-    private double balance;
+    List<Account> accounts;
 
     public User(String email, String password) {
         this.email = email;
@@ -20,14 +20,6 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.password = password;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public String getEmail() {
@@ -62,10 +54,14 @@ public class User {
         this.surname = surname;
     }
 
-    @Override
-    public boolean equals(Object o) {
+
+    public boolean equals1(Object o) {
         if (!(o instanceof User user)) return false;
         return Objects.equals(email, user.email);
+    }
+    public boolean equals2(Object o) {
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
 }

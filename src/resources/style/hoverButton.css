@@ -18,7 +18,7 @@
     -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-size: 14px;
-    -fx-font-style:Bold;
+    -fx-font-weight: bold;
     -fx-cursor: hand;
 
     -fx-border-width: 1px;
@@ -27,8 +27,26 @@
 }
 
 .hoverButton2:hover {
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
     -fx-background-color: white;
     -fx-border-color: #8c00ff;
     -fx-text-fill: #00ffc4;
+}
+
+.hoverButton3 {
+    -fx-cursor: hand;
+}
+
+.hoverButton3:hover {
+    -fx-background-color: transparent;
+    -fx-underline: true;
+}
+
+.hoverButton4 {
+    -fx-cursor: hand;
+}
+
+.hoverButton4:hover {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
 }

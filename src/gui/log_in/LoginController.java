@@ -1,15 +1,14 @@
 package gui.log_in;
-import functionality.logic_controller.LogicController;
+import functionality.app;
+import functionality.appController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import user.User;
+import user.UserSession;
 
 public class LoginController {
 
@@ -63,15 +62,23 @@ public class LoginController {
         }
     }
 
-    LogicController k = new LogicController();
+    appController app = new appController();
 
     @FXML
     private void handleBtnLogin2() {
-        if (k.login(textFieldEmail.getText(), textFieldPassword.getText())) {
-            NavigationController.openNewPageAndClosePrevious(btnLogin2,"/gui/mainPage/main.fxml","Main Page");
+
+        User loggedUser = app.login(textFieldEmail.getText(), textFieldPassword.getText());
+
+        if (loggedUser != null) {
+
+            UserSession.setActiveUser(loggedUser);
+            NavigationController.openNewPageAndClosePrevious(btnLogin2,"/gui/main_page/main.fxml","Main Page");
+
+        }else{
+           emailLabel.setStyle("-fx-text-fill: red");
+           passwordLabel.setStyle("-fx-text-fill: red");
         }
+
     }
-
-
 }
 

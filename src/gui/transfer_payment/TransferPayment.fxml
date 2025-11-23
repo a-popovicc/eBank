@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="340.0" style="-fx-background-image: url('/resources/picture/main-platna-kartica.png');" stylesheets="@/resources/style/style.css, @/resources/style/label-strong.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.transfer_payment.TransferController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="340.0" style="-fx-background-image: url('/resources/picture/credit-card2.png');" stylesheets="@/resources/style/hoverButton.css, @/resources/style/label-strong.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.transfer_payment.TransferController">
    <children>
       <VBox prefHeight="427.0" prefWidth="340.0">
          <children>
