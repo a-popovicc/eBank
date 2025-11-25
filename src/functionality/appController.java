@@ -9,14 +9,27 @@ import validation.TextFieldValidation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class appController implements app {
+public class appController {
+
+    private static appController instance;
 
     private List<User> users;
 
-    public appController() {
-        users = new ArrayList<>();
-        users=DatabaseController.loadUsersFromJson("database/users.json", users);
+    private appController() {
+        users = DatabaseController.loadUsersFromJson("database/users.json", new ArrayList<>());
     }
+
+    public static appController getInstance() {
+        if (instance == null) {
+            instance = new appController();
+        }
+        return instance;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
 
     public User login(String email, String password) {
 
@@ -24,14 +37,14 @@ public class appController implements app {
 
         for (User u : users) {
             if (u.equals2(temp)) {
-                return u; // vracamo pravog korisnika iz liste
+                return u;
             }
         }
         return null;
     }
 
 
-    @Override
+
     public User signup(String name, String surname, String email, String password) {
 
         User newUser = new User(TextFieldValidation.turnFirstLetterToUpperCase(name),
@@ -50,7 +63,6 @@ public class appController implements app {
         return newUser;
     }
 
-    @Override
     public boolean saveNewAccount(User activeUser) {
 
         for (int i = 0; i < users.size(); i++) {
@@ -62,6 +74,28 @@ public class appController implements app {
         // upiši nazad u JSON
         return DatabaseController.writeObjectToJson(users, "database/users.json");
     }
+    public Account createNewAccount(User activeUser) {
+
+        if (activeUser == null) return null;
+
+        Account acc = new Account();
+        acc.setName("New Account");
+        acc.setAccountNumber();
+
+        if (activeUser.getAccounts() == null) {
+            activeUser.setAccounts(new ArrayList<>());
+        }
+
+        activeUser.getAccounts().add(acc);
+
+        boolean saved = saveNewAccount(activeUser);
+        if (!saved) {
+            System.out.println("ERROR: Account not saved!");
+        }
+
+        return acc;
+    }
+
 
     public void syncUser(User activeUser) {
         for (int i = 0; i < users.size(); i++) {
@@ -72,7 +106,7 @@ public class appController implements app {
         }
     }
 
-    @Override
+
     public boolean updateAccount(User activeUser, String accountNumber, String newName) {
         syncUser(activeUser);
         for (int i = 0; i < users.size(); i++) {
@@ -89,6 +123,18 @@ public class appController implements app {
             }
         }
         return DatabaseController.writeObjectToJson(users, "database/users.json");
+    }
+    public boolean findAccount(String accountNumber) {
+        for(User u : users){
+            if(u.getAccounts() != null) {
+                for(Account acc : u.getAccounts()) {
+                    if (acc.getAccountNumber().equals(accountNumber)) {
+                     return false;
+                    }
+                }
+            }
+        }
+        return true; //nema ga znaci moze
     }
 
 

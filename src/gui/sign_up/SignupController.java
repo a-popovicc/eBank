@@ -1,6 +1,5 @@
 package gui.sign_up;
 
-import functionality.app;
 import functionality.appController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
@@ -37,7 +36,8 @@ public class SignupController {
     private Label passwordConfirmLabel2;
 
 
-    appController app = new appController();
+    appController app = appController.getInstance();
+
 
     @FXML
     private void handleBtnSignup2() {

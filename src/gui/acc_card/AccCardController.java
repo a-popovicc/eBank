@@ -10,11 +10,13 @@ import user.User;
 import user.UserSession;
 
 public class AccCardController {
+
     @FXML
     private TextField textFieldAccName;
     @FXML
     private Button btnAccount;
-    appController app = new appController();
+    appController app = appController.getInstance();
+
 
 
     @FXML

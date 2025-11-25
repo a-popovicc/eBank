@@ -26,7 +26,8 @@ public class MainController {
     private Label UserNameLabel;
     @FXML
     private Button btnCreateNew;
-    appController app = new appController();
+    appController app = appController.getInstance();
+
 
 
     @FXML
@@ -50,26 +51,22 @@ public class MainController {
     @FXML
     private void handleBtnCreateNew() {
 
-        Account newAccount = new Account();
-        newAccount.setName("New Account");
-
-        // 1) Kreiraj GUI karticu
-        Parent card = NavigationController.loadEmptyAccountCard(newAccount);
-        accountContainer.getChildren().add(card);
-
         User active = UserSession.getActiveUser();
-        if (active.getAccounts() == null) {
-            active.setAccounts(new ArrayList<>());
-        }
-        active.getAccounts().add(newAccount);
 
-        // 4) Sacuvaj izmene preko AppController instance
-        boolean saved = app.saveNewAccount(active);
+        // App kontroler odradi sve poslove oko domen logike
+        Account newAccount = app.createNewAccount(active);
 
-        if (!saved) {
-            System.out.println("Error: Account NOT saved!");
+        if (newAccount == null) {
+            System.out.println("Error: Account creation failed.");
+            return;
         }
+
+        // GUI samo prikazuje rezultat
+        Parent card = NavigationController.loadEmptyAccountCard(newAccount);
+
+        accountContainer.getChildren().add(card);
     }
+
 
 
 }

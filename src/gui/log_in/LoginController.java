@@ -1,5 +1,4 @@
 package gui.log_in;
-import functionality.app;
 import functionality.appController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
@@ -62,7 +61,8 @@ public class LoginController {
         }
     }
 
-    appController app = new appController();
+    appController app = appController.getInstance();
+
 
     @FXML
     private void handleBtnLogin2() {
