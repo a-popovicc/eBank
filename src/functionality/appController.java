@@ -1,6 +1,7 @@
 package functionality;
 
 import database.DatabaseController;
+import user.Account;
 import user.User;
 import validation.SignupValidation;
 import validation.TextFieldValidation;
@@ -43,9 +44,53 @@ public class appController implements app {
         }
 
         users.add(newUser);
-        DatabaseController.writeObjectToJson(users, "database/users.json");
-
+        if(!DatabaseController.writeObjectToJson(users, "database/users.json")){
+            return null;
+        }
         return newUser;
     }
+
+    @Override
+    public boolean saveNewAccount(User activeUser) {
+
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).equals1(activeUser)) {
+                users.set(i, activeUser);
+                break;
+            }
+        }
+        // upiši nazad u JSON
+        return DatabaseController.writeObjectToJson(users, "database/users.json");
+    }
+
+    public void syncUser(User activeUser) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).equals1(activeUser)) {
+                users.set(i, activeUser);
+                return;
+            }
+        }
+    }
+
+    @Override
+    public boolean updateAccount(User activeUser, String accountNumber, String newName) {
+        syncUser(activeUser);
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).equals2(activeUser)) {
+
+                // pronađi account za promenu
+                for (Account acc : users.get(i).getAccounts()) {
+                    if (acc.getAccountNumber().equals(accountNumber)) {
+                        acc.setName(newName);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        return DatabaseController.writeObjectToJson(users, "database/users.json");
+    }
+
+
 
 }

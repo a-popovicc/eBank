@@ -3,12 +3,26 @@
     "name": "Aleksa",
     "surname": "Popovic",
     "email": "apopoviicc@gmail.com",
-    "password": "13121764A"
+    "password": "13121764A",
+    "accounts": [
+      {
+        "name": "Account 1",
+        "accountNumber": "123-92412-57",
+        "balance": 0.0
+      }
+    ]
   },
   {
     "name": "Name",
     "surname": "Surname",
     "email": "",
-    "password": ""
+    "password": "",
+    "accounts": [
+      {
+        "name": "Acc 1",
+        "accountNumber": "123-51722-58",
+        "balance": 0.0
+      }
+    ]
   }
 ]

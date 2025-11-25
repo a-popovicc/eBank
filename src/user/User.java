@@ -54,6 +54,13 @@ public class User {
         this.surname = surname;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public boolean equals1(Object o) {
         if (!(o instanceof User user)) return false;

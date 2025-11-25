@@ -12,17 +12,19 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class DatabaseController {
-    // Metoda koja upisuje objekat u JSON fajl
-    public static void writeObjectToJson(Object obj, String filePath) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // lep format JSON-a
+
+    public static boolean writeObjectToJson(Object obj, String filePath) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         try (FileWriter writer = new FileWriter(filePath)) {
             gson.toJson(obj, writer);
-            //System.out.println("Data saved to " + filePath);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
+
     public static List<User> loadUsersFromJson(String filePath, List<User> users) {
         Gson gson = new Gson();
 
@@ -32,8 +34,8 @@ public class DatabaseController {
             List<User> loadedUsers = gson.fromJson(reader, userListType);
 
             if (loadedUsers != null) {
-                users.clear();          // obriši eventualni sadržaj
-                users.addAll(loadedUsers); // popuni listu sa podacima iz fajla
+                users.clear();
+                users.addAll(loadedUsers);
             }
 
         } catch (Exception e) {

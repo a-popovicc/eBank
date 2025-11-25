@@ -1,9 +1,25 @@
 package user;
 
+import java.util.Objects;
+import java.util.Random;
+
 public class Account {
 
+    private String name;
     private String accountNumber;
     private double balance;
+
+    public Account(){
+        accountNumber=generateAccountNumber();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getAccountNumber() {
         return accountNumber;
@@ -20,4 +36,42 @@ public class Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Account account)) return false;
+        return Objects.equals(accountNumber, account.accountNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(accountNumber);
+    }
+
+    public static String generateAccountNumber() {
+        Random rand = new Random();
+
+        int middle = rand.nextInt(100000); // 0–99999
+        int last = rand.nextInt(100);      // 0–99
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("123-");
+
+        // uvek 5 cifara
+        if (middle < 10) sb.append("0000");
+        else if (middle < 100) sb.append("000");
+        else if (middle < 1000) sb.append("00");
+        else if (middle < 10000) sb.append("0");
+        sb.append(middle);
+
+        sb.append("-");
+
+        // uvek 2 cifre
+        if (last < 10) sb.append("0");
+        sb.append(last);
+
+        return sb.toString();
+    }
+
 }

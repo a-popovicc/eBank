@@ -10,7 +10,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <TextField layoutY="2.0" promptText="New account" style="-fx-background-color: transparent;" styleClass="purpleField">
+      <TextField fx:id="textFieldAccName" layoutY="2.0" promptText="New account" style="-fx-background-color: transparent;" styleClass="purpleField">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font></TextField>

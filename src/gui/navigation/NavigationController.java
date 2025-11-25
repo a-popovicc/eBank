@@ -1,10 +1,12 @@
 package gui.navigation;
 
+import gui.acc_card.AccCardController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import user.Account;
 
 public class NavigationController {
 
@@ -76,11 +78,49 @@ public class NavigationController {
                 }
         );
 
-    }public static void openNewPageAndClosePrevious2(Node nodeInCurrentWindow,  String fxmlPath,  String title){
+    }
+    public static void openNewPageAndClosePrevious2(Node nodeInCurrentWindow,  String fxmlPath,  String title){
 
         Stage oldStage = (Stage) nodeInCurrentWindow.getScene().getWindow();
 
         openInNewWindow(oldStage, fxmlPath, title, null);
+    }
+
+    public static Parent loadAccountCard(String accName, String accNumber) {
+        try {
+            FXMLLoader loader = new FXMLLoader( NavigationController.class.getResource("/gui/acc_card/AccCard.fxml"));
+
+            Parent card = loader.load();
+            AccCardController controller = loader.getController();
+
+            controller.setAccountData(accName, accNumber);
+
+
+            return card;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static Parent loadEmptyAccountCard(Account account) {
+        try {
+            FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource("/gui/acc_card/AccCard.fxml") );
+
+            Parent card = loader.load();
+
+            AccCardController controller = loader.getController();
+
+            controller.setAccountData(account.getName(), account.getAccountNumber());
+
+
+            return card;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 

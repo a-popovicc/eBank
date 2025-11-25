@@ -1,5 +1,6 @@
 package functionality;
 
+import user.Account;
 import user.User;
 
 public interface app {
@@ -27,6 +28,9 @@ public interface app {
      * if the User is just created
      */
     public User signup(String name, String surname, String email, String password);
+    public boolean saveNewAccount(User activeUser);
+    public boolean updateAccount(User activeUser, String accountNumber, String newNAme);
+
 
 
 }
