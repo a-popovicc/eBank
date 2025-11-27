@@ -52,5 +52,16 @@ public class TextFieldValidation {
        }
        return false;
    }
+   public static boolean validateAmount(String amount){
+       if(amount==null || amount.isEmpty()){
+           return false;
+       }
+      for(int i=0; i<amount.length(); i++){
+          if(!Character.isDigit(amount.charAt(i))){
+              return false;
+          }
+      }
+      return true;
+   }
 
 }

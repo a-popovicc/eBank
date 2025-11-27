@@ -41,7 +41,7 @@ public class SignupController {
 
     @FXML
     private void handleBtnSignup2() {
-        boolean valid = SignupValidation.validateSignup(
+        boolean valid = app.validateSignup(
                 textFieldName.getText(),
                 textFieldSurname.getText(),
                 textFieldEmail.getText(),

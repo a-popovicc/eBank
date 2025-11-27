@@ -1,10 +1,8 @@
 package gui.main_page;
 
 import functionality.appController;
-import gui.acc_card.AccCardController;
 import gui.navigation.NavigationController;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,8 +10,6 @@ import javafx.scene.layout.VBox;
 import user.Account;
 import user.User;
 import user.UserSession;
-
-import java.util.ArrayList;
 
 
 public class MainController {
@@ -27,7 +23,6 @@ public class MainController {
     @FXML
     private Button btnCreateNew;
     appController app = appController.getInstance();
-
 
 
     @FXML

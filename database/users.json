@@ -7,13 +7,9 @@
     "accounts": [
       {
         "name": "Account 1",
-        "accountNumber": "123-92412-57",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-15549-85",
-        "balance": 0.0
+        "accountNumber": "123-99869750-82",
+        "balanceNow": 245000.0,
+        "balanceBefore": 235000.0
       }
     ]
   },
@@ -24,63 +20,24 @@
     "password": "",
     "accounts": [
       {
-        "name": "Acc 1",
-        "accountNumber": "123-51722-58",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-59265-33",
-        "balance": 0.0
-      },
-      {
-        "name": "First",
-        "accountNumber": "123-22687-14",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-24890-32",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-83437-65",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-35436-63",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-35871-48",
-        "balance": 0.0
+        "name": "Account 1",
+        "accountNumber": "123-82506083-51",
+        "balanceNow": 4.99798,
+        "balanceBefore": 4.9988
       }
     ]
   },
   {
-    "name": "Zmw",
-    "surname": "Asca",
-    "email": "a.@rs.rs",
-    "password": "123456A"
-  },
-  {
-    "name": "Dsjad",
-    "surname": "Akdjsbaks",
-    "email": "a@gm.rs",
-    "password": "1234567A",
+    "name": "Tica",
+    "surname": "Bajic",
+    "email": "otijana21@gmail.com",
+    "password": "Ticabajic",
     "accounts": [
       {
-        "name": "New Account",
-        "accountNumber": "123-43478-82",
-        "balance": 0.0
-      },
-      {
-        "name": "New Account",
-        "accountNumber": "123-33448-44",
-        "balance": 0.0
+        "name": "Account 1",
+        "accountNumber": "123-57909355-44",
+        "balanceNow": 95000.0,
+        "balanceBefore": 80000.0
       }
     ]
   }

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import user.Account;
+import user.AccountSession;
 import user.User;
 import user.UserSession;
 
@@ -34,12 +35,12 @@ public class AccCardController {
     private void saveAccNameInstantly() {
 
         User activeUser = UserSession.getActiveUser();
-
-        boolean success= app.updateAccount(activeUser, btnAccount.getText() ,textFieldAccName.getText());
+        boolean success = app.updateAccount(activeUser, btnAccount.getText() ,textFieldAccName.getText());
         if(success) {
-
+            System.out.println("Account successfully updated");
+        }else  {
+            System.out.println("Account could not be updated");
         }
-
     }
 
 
@@ -52,6 +53,16 @@ public class AccCardController {
 
     @FXML
     public void handleBtnAccount() {
-        NavigationController.openNewPageAndClosePrevious2(btnAccount,"/gui/acc/acc.fxml","Account Page");
+
+        Account activeAccount = app.findAccount1(btnAccount.getText());
+        if(activeAccount != null) {
+            AccountSession.setActiveAccount(activeAccount);
+            System.out.println(activeAccount.toString());
+            NavigationController.openNewPageAndClosePrevious2(btnAccount,"/gui/acc/acc.fxml","Account Page");
+        }else  {
+            System.out.println("Account not found");
+        }
+
     }
+
 }

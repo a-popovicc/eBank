@@ -1,0 +1,9 @@
+.chart-bar.default-color0 {
+    -fx-bar-fill: #07b5ec; /* Before */
+}
+
+.chart-bar.default-color1 {
+    -fx-bar-fill: #07b5ec; /* Now */
+}
+
+
