@@ -11,7 +11,6 @@ import user.UserSession;
 
 public class LoginController {
 
-
     @FXML
     private TextField textFieldEmail;
     @FXML
@@ -28,20 +27,17 @@ public class LoginController {
     private Button btnLogin2;
 
 
-    private boolean passwordVisible = false; // stanje lozinke
+    private boolean passwordVisible = false;
 
     @FXML
     public void initialize() {
-        // sinhronizacija tekstova oba polja
-        textFieldPassword.textProperty().bindBidirectional(passwordFieldEnc.textProperty());
 
-        // dodaj akciju dugmetu
+        textFieldPassword.textProperty().bindBidirectional(passwordFieldEnc.textProperty());
         btnViewPassword.setOnAction(event -> togglePasswordVisibility());
     }
 
     private void togglePasswordVisibility() {
         if (passwordVisible) {
-            // Sakrij lozinku: pokaži PasswordField
             textFieldPassword.setVisible(false);
             textFieldPassword.setManaged(false);
 
@@ -50,7 +46,6 @@ public class LoginController {
 
             passwordVisible = false;
         } else {
-            // Prikaži lozinku: pokaži TextField
             textFieldPassword.setVisible(true);
             textFieldPassword.setManaged(true);
 
@@ -66,19 +61,22 @@ public class LoginController {
 
     @FXML
     private void handleBtnLogin2() {
+        try {
+            User loggedUser = app.login(textFieldEmail.getText(), textFieldPassword.getText());
+            if (loggedUser != null) {
 
-        User loggedUser = app.login(textFieldEmail.getText(), textFieldPassword.getText());
+                UserSession.setActiveUser(loggedUser);
+                NavigationController.openNewPageAndClosePrevious(btnLogin2, "/gui/main_page/main.fxml", "Main Page");
 
-        if (loggedUser != null) {
-
-            UserSession.setActiveUser(loggedUser);
-            NavigationController.openNewPageAndClosePrevious(btnLogin2,"/gui/main_page/main.fxml","Main Page");
-
-        }else{
-           emailLabel.setStyle("-fx-text-fill: red");
-           passwordLabel.setStyle("-fx-text-fill: red");
+            } else {
+                emailLabel.setStyle("-fx-text-fill: red");
+                passwordLabel.setStyle("-fx-text-fill: red");
+            }
         }
-
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
+
 }
 

@@ -10,6 +10,9 @@ import user.Account;
 
 public class NavigationController {
 
+    // ===========================
+    //   OPEN IN NEW WINDOW (NO CLOSE)
+    // ===========================
     public static void openInNewWindow(String fxmlPath, String title, Runnable onClose) {
         try {
             FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource(fxmlPath));
@@ -17,41 +20,37 @@ public class NavigationController {
 
             Stage stage = new Stage();
             stage.setTitle(title);
+            stage.setResizable(false);       // 🔥 DISABLE RESIZE
             stage.setScene(new Scene(root));
             stage.show();
 
-            // callback kada se zatvori
-            stage.setOnHiding(event -> {
-                if (onClose != null) {
-                    onClose.run();
-                }
-            });
+            if (onClose != null) {
+                stage.setOnHiding(event -> onClose.run());
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
+    // ===========================
+    //   OPEN, CLOSE CURRENT
+    // ===========================
     public static void openInNewWindow(Stage currentStage, String fxmlPath, String title, Runnable onOpen) {
         try {
-
-            // zatvori trenutni stage
             if (currentStage != null) {
                 currentStage.close();
             }
 
-            // učitaj FXML
             FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource(fxmlPath));
             Parent root = loader.load();
 
-            // otvori novi stage
             Stage newStage = new Stage();
             newStage.setTitle(title);
+            newStage.setResizable(false);  // 🔥 DISABLE RESIZE
             newStage.setScene(new Scene(root));
             newStage.show();
 
-            // OVDE se odmah izvršava callback
             if (onOpen != null) {
                 onOpen.run();
             }
@@ -60,41 +59,35 @@ public class NavigationController {
             e.printStackTrace();
         }
     }
-    public static void openNewPageAndClosePrevious(Node nodeInCurrentWindow,  String fxmlPath,  String title){
 
+    // ===========================
+    //   OPEN NEW PAGE + CLOSE OLD
+    // ===========================
+    public static void openNewPageAndClosePrevious(Node nodeInCurrentWindow, String fxmlPath, String title) {
         Stage oldStage = (Stage) nodeInCurrentWindow.getScene().getWindow();
 
-        openInNewWindow(
-                oldStage,
-                fxmlPath,
-                title,
-                () -> {
-                    // ZATVARA SVE PRETHODNE PROZORE
-                    Stage.getWindows().stream()
-                            .filter(w -> w instanceof Stage)
-                            .forEach(w -> {
-                                if (w.isShowing()) w.hide();
-                            });
-                }
-        );
-
+        openInNewWindow(oldStage, fxmlPath, title, () -> {
+            // Callback — trenutno ne radi ništa i to je dobro.
+        });
     }
-    public static void openNewPageAndClosePrevious2(Node nodeInCurrentWindow,  String fxmlPath,  String title){
 
+    public static void openNewPageAndClosePrevious2(Node nodeInCurrentWindow, String fxmlPath, String title) {
         Stage oldStage = (Stage) nodeInCurrentWindow.getScene().getWindow();
-
         openInNewWindow(oldStage, fxmlPath, title, null);
     }
 
+    // ===========================
+    //   LOAD ACCOUNT CARD
+    // ===========================
     public static Parent loadAccountCard(String accName, String accNumber) {
         try {
-            FXMLLoader loader = new FXMLLoader( NavigationController.class.getResource("/gui/acc_card/AccCard.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    NavigationController.class.getResource("/gui/acc_card/AccCard.fxml")
+            );
 
             Parent card = loader.load();
             AccCardController controller = loader.getController();
-
             controller.setAccountData(accName, accNumber);
-
 
             return card;
 
@@ -106,14 +99,13 @@ public class NavigationController {
 
     public static Parent loadEmptyAccountCard(Account account) {
         try {
-            FXMLLoader loader = new FXMLLoader(NavigationController.class.getResource("/gui/acc_card/AccCard.fxml") );
+            FXMLLoader loader = new FXMLLoader(
+                    NavigationController.class.getResource("/gui/acc_card/AccCard.fxml")
+            );
 
             Parent card = loader.load();
-
             AccCardController controller = loader.getController();
-
             controller.setAccountData(account.getName(), account.getAccountNumber());
-
 
             return card;
 
@@ -122,13 +114,4 @@ public class NavigationController {
             return null;
         }
     }
-
-
 }
-
-
-
-
-
-
-

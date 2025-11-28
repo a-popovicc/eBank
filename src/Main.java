@@ -12,6 +12,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/gui/welcome/Welcome.fxml"));
         primaryStage.setTitle("eBank - Welcome");
         primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.resizableProperty().setValue(false);
         primaryStage.show();
     }
 

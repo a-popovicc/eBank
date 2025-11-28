@@ -20,6 +20,8 @@ public class appController {
 
     private appController() {
         users = DatabaseController.loadUsersFromJson("database/users.json", new ArrayList<>());
+        if (users == null) users = new ArrayList<>();
+
     }
 
     public static appController getInstance() {
@@ -33,9 +35,6 @@ public class appController {
         return users;
     }
 
-    // -------------------------
-    // LOGIN & SIGNUP OSTAVLJENI
-    // -------------------------
     public User login(String email, String password) {
         User temp = new User(email, password);
         for (User u : users) {
@@ -63,16 +62,11 @@ public class appController {
         return newUser;
     }
 
-    // -------------------------
-    // NOVA LOGIKA — NEMA PETLJI
-    // -------------------------
-
     private boolean saveUsers() {
         return DatabaseController.writeObjectToJson(users, "database/users.json");
     }
 
     public boolean saveNewAccount(User activeUser) {
-        // activeUser već jeste referenca iz users liste → dovoljno je samo saveUsers()
         return saveUsers();
     }
 
@@ -92,7 +86,6 @@ public class appController {
         if (!saveUsers()) {
             System.out.println("ERROR: Account not saved!");
         }
-
         return acc;
     }
 
@@ -113,7 +106,7 @@ public class appController {
             if (u.getAccounts() != null) {
                 for (Account acc : u.getAccounts()) {
                     if (acc.getAccountNumber().equals(accountNumber)) {
-                        return false; // već postoji
+                        return false;
                     }
                 }
             }
@@ -134,7 +127,6 @@ public class appController {
         return null;
     }
 
-    // Validacije ostaju iste
     public boolean validateSignup(String name,
                                   String surname,
                                   String email,
@@ -155,7 +147,6 @@ public class appController {
 
     public boolean transfer(Label message, String fromAccountNumber, String toAccountNumber, String amountStr) {
 
-        // 1) Pretvori amount
         double amount;
         try {
             amount = Double.parseDouble(amountStr);
@@ -163,38 +154,31 @@ public class appController {
             return false;
         }
 
-        // 2) Account sa kog se skida (iz sesije)
         Account from = AccountSession.getActiveAccount();
         if (from == null) return false;
 
-        // Bezbednosna provera da je taj account stvarno od usera
         if (!from.getAccountNumber().equals(fromAccountNumber)) {
             return false;
         }
 
-        // 3) Account na koji se prebacuje (traži se kroz sve korisnike)
         Account to = findAccount1(toAccountNumber);
         if (to == null) {
-            return false; // ne postoji
+            return false;
         }
 
-        // 4) Da li ima dovoljno novca?
         if (from.getBalanceNow() < amount) {
             message.setText("Insufficient funds!");
             return false;
         }
 
-        // 5) Snimi prethodne vrednosti — da grafovi i istorija rade
         from.setBalanceBefore(from.getBalanceNow());
         to.setBalanceBefore(to.getBalanceNow());
 
-        // 6) Izvrši transfer
         from.setBalanceNow(from.getBalanceNow() - amount);
         to.setBalanceNow(to.getBalanceNow() + amount);
         message.setText("Transfer successful!");
         message.setStyle("-fx-text-fill: green;");
 
-        // 7) Zapiši u JSON
         return saveUsers();
     }
 

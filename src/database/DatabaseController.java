@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import user.User;
 
-
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
